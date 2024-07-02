@@ -313,6 +313,19 @@ jobs:
         run: |
           docker buildx imagetools inspect ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:${{ matrix.image.tags[0] }}
 
+      - name: Run Trivy vulnerability scanner in repo mode
+        uses: aquasecurity/trivy-action@0.23.0
+        with:
+          image-ref: 'ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:${{ matrix.image.tags[0] }}'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL'
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
       - name: Build successful
         id: build-success
         if: ${{ always() && steps.merge.outcome == 'success' && steps.inspect.outcome == 'success' }}
