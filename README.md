@@ -116,8 +116,6 @@ Container | Channel | Image
 [lidarr-develop](https://github.com/volschin/containers/pkgs/container/lidarr-develop) | develop | ghcr.io/volschin/lidarr-develop
 [lidarr-nightly](https://github.com/volschin/containers/pkgs/container/lidarr-nightly) | nightly | ghcr.io/volschin/lidarr-nightly
 [par2cmdline-turbo](https://github.com/volschin/containers/pkgs/container/par2cmdline-turbo) | stable | ghcr.io/volschin/par2cmdline-turbo
-[plex](https://github.com/volschin/containers/pkgs/container/plex) | stable | ghcr.io/volschin/plex
-[plex-beta](https://github.com/volschin/containers/pkgs/container/plex-beta) | beta | ghcr.io/volschin/plex-beta
 [postgres-init](https://github.com/volschin/containers/pkgs/container/postgres-init) | stable | ghcr.io/volschin/postgres-init
 [prowlarr](https://github.com/volschin/containers/pkgs/container/prowlarr) | master | ghcr.io/volschin/prowlarr
 [prowlarr-develop](https://github.com/volschin/containers/pkgs/container/prowlarr-develop) | develop | ghcr.io/volschin/prowlarr-develop
@@ -134,6 +132,7 @@ Container | Channel | Image
 [sonarr-develop](https://github.com/volschin/containers/pkgs/container/sonarr-develop) | develop | ghcr.io/volschin/sonarr-develop
 [theme-park](https://github.com/volschin/containers/pkgs/container/theme-park) | stable | ghcr.io/volschin/theme-park
 [volsync](https://github.com/volschin/containers/pkgs/container/volsync) | stable | ghcr.io/volschin/volsync
+[whisparr-nightly](https://github.com/volschin/containers/pkgs/container/whisparr-nightly) | nightly | ghcr.io/volschin/whisparr-nightly
 
 
 ## Deprecations
