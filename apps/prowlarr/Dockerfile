@@ -47,6 +47,7 @@ RUN \
     && rm -rf /tmp/*
 
 COPY ./apps/prowlarr/entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
 
 USER nobody:nogroup
 WORKDIR /config
