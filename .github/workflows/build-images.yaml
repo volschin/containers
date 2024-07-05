@@ -245,9 +245,6 @@ jobs:
     name: Merge ${{ matrix.image.name }}
     runs-on: ubuntu-latest
     needs: ["prepare", "build-platform-images"]
-    permissions:
-      packages: write
-      id-token: write # needed for signing the images with GitHub OIDC Token
     # Always run merge, as the prior matrix is all or nothing. We test for prior step failure
     # in the "Test Failed Bit" step. This ensures if one app fails, others can still complete.
     if: ${{ always() && inputs.pushImages && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '[]' && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '' }}
