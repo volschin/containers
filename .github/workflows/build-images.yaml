@@ -53,7 +53,7 @@ jobs:
           private-key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           token: "${{ steps.app-token.outputs.token }}"
 
@@ -245,6 +245,9 @@ jobs:
     name: Merge ${{ matrix.image.name }}
     runs-on: ubuntu-latest
     needs: ["prepare", "build-platform-images"]
+    permissions:
+      packages: write
+      id-token: write # needed for signing the images with GitHub OIDC Token
     # Always run merge, as the prior matrix is all or nothing. We test for prior step failure
     # in the "Test Failed Bit" step. This ensures if one app fails, others can still complete.
     if: ${{ always() && inputs.pushImages && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '[]' && toJSON(fromJSON(needs.prepare.outputs.matrices).images) != '' }}
@@ -282,9 +285,11 @@ jobs:
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 # v3.5.0
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446 # v3
         with:
           registry: ghcr.io
           username: "${{ github.actor }}"
@@ -312,19 +317,6 @@ jobs:
         shell: bash
         run: |
           docker buildx imagetools inspect ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:${{ matrix.image.tags[0] }}
-
-      - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@0.23.0
-        with:
-          image-ref: 'ghcr.io/${{ env.LOWERCASE_REPO_OWNER }}/${{ matrix.image.name }}:${{ matrix.image.tags[0] }}'
-          ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL'
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: 'trivy-results.sarif'
 
       - name: Build successful
         id: build-success
