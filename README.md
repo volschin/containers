@@ -114,17 +114,14 @@ Container | Channel | Image
 [jbops](https://github.com/volschin/containers/pkgs/container/jbops) | stable | ghcr.io/volschin/jbops
 [lidarr](https://github.com/volschin/containers/pkgs/container/lidarr) | master | ghcr.io/volschin/lidarr
 [lidarr-develop](https://github.com/volschin/containers/pkgs/container/lidarr-develop) | develop | ghcr.io/volschin/lidarr-develop
-[lidarr-nightly](https://github.com/volschin/containers/pkgs/container/lidarr-nightly) | nightly | ghcr.io/volschin/lidarr-nightly
 [par2cmdline-turbo](https://github.com/volschin/containers/pkgs/container/par2cmdline-turbo) | stable | ghcr.io/volschin/par2cmdline-turbo
 [postgres-init](https://github.com/volschin/containers/pkgs/container/postgres-init) | stable | ghcr.io/volschin/postgres-init
 [prowlarr](https://github.com/volschin/containers/pkgs/container/prowlarr) | master | ghcr.io/volschin/prowlarr
 [prowlarr-develop](https://github.com/volschin/containers/pkgs/container/prowlarr-develop) | develop | ghcr.io/volschin/prowlarr-develop
-[prowlarr-nightly](https://github.com/volschin/containers/pkgs/container/prowlarr-nightly) | nightly | ghcr.io/volschin/prowlarr-nightly
 [qbittorrent](https://github.com/volschin/containers/pkgs/container/qbittorrent) | stable | ghcr.io/volschin/qbittorrent
 [qbittorrent-beta](https://github.com/volschin/containers/pkgs/container/qbittorrent-beta) | beta | ghcr.io/volschin/qbittorrent-beta
 [radarr](https://github.com/volschin/containers/pkgs/container/radarr) | master | ghcr.io/volschin/radarr
 [radarr-develop](https://github.com/volschin/containers/pkgs/container/radarr-develop) | develop | ghcr.io/volschin/radarr-develop
-[radarr-nightly](https://github.com/volschin/containers/pkgs/container/radarr-nightly) | nightly | ghcr.io/volschin/radarr-nightly
 [readarr-develop](https://github.com/volschin/containers/pkgs/container/readarr-develop) | develop | ghcr.io/volschin/readarr-develop
 [readarr-nightly](https://github.com/volschin/containers/pkgs/container/readarr-nightly) | nightly | ghcr.io/volschin/readarr-nightly
 [sabnzbd](https://github.com/volschin/containers/pkgs/container/sabnzbd) | stable | ghcr.io/volschin/sabnzbd
