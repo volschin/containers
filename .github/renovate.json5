@@ -1,15 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    ":dependencyDashboard",
-    ":disableRateLimiting",
-    ":timezone(America/New_York)",
-    ":semanticCommits"
+  "extends": [ 
+    "local>volschin/renovate-config"
   ],
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prEditedNotification", "prIgnoreNotification"],
   "packageRules": [
     {
       "addLabels": ["renovate/container", "type/major"],
