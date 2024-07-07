@@ -33,6 +33,9 @@ on:
       BOT_APP_PRIVATE_KEY:
         description: The private key of the GitHub App
         required: true
+      DISCORD_WEBHOOK:
+        description: Notification webhook on discord
+        required: true
 
 jobs:
   prepare:
