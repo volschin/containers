@@ -232,15 +232,7 @@ jobs:
           dgoss run ${image_name} ${{ matrix.image.goss_args }}
 
       - name: Sign the images with GitHub OIDC Token
-        env:
-          DIGEST: ${{ steps.build.outputs.digest }}
-          TAGS: ${{ env.image_name }}
-        run: |
-          images=""
-          for tag in ${TAGS}; do
-            images+="${tag}@${DIGEST} "
-          done
-          cosign sign --yes ${images}
+        run: cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}
 
       - name: Export Digest
         id: export-digest
