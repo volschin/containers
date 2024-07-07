@@ -36,6 +36,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
+      security-events: write
     with:
       appsToBuild: ${{ inputs.appsToBuild }}
       force: ${{ inputs.force == true }}
