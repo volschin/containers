@@ -248,6 +248,8 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Sign the images with GitHub OIDC Token
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
         run: cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}
 
       - name: Export Digest
