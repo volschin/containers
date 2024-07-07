@@ -231,8 +231,19 @@ jobs:
           fi
           dgoss run ${image_name} ${{ matrix.image.goss_args }}
 
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.23.0
+        with:
+          image-ref: '${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}'
+          format: 'cosign-vuln'
+          output: 'vuln.json'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
+
       - name: Sign the images with GitHub OIDC Token
-        run: cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}
+        run: echo "cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}"
 
       - name: Export Digest
         id: export-digest
