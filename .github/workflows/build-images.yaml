@@ -234,7 +234,7 @@ jobs:
       - name: Sign the images with GitHub OIDC Token
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
-          TAGS: ${{ matrix.image.version }}
+          TAGS: ${{ env.image_name }}
         run: |
           images=""
           for tag in ${TAGS}; do
