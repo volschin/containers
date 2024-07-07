@@ -233,6 +233,8 @@ jobs:
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@0.23.0
+        env:
+          TRIVY_PLATFORM: ${{ matrix.image.platform }}
         with:
           image-ref: '${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}'
           format: 'cosign-vuln'
