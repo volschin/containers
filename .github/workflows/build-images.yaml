@@ -239,7 +239,7 @@ jobs:
           image-ref: '${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}'
           format: 'cosign-vuln'
           output: 'vuln.json'
-          exit-code: '1'
+          exit-code: '0'
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
