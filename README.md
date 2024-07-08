@@ -15,7 +15,7 @@ _An opinionated collection of container images_
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/onedr0p/containers?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/onedr0p/containers?style=for-the-badge)
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/onedr0p/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/volschin/containers/release-scheduled.yaml?style=for-the-badge&label=Scheduled%20Release)
 
 </div>
 
