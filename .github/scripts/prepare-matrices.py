@@ -100,7 +100,7 @@ def get_image_metadata(subdir, meta, forRelease=False, force=False, channels=Non
         toBuild["version"] = version
 
         # Image Tags
-        toBuild["tags"] = ["rolling", version]
+        toBuild["tags"] = [version, "rolling"]
         if meta.get("semver", False):
             parts = version.split(".")[:-1]
             while len(parts) > 0:
