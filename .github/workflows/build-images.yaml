@@ -250,7 +250,7 @@ jobs:
       - name: Sign the images with GitHub OIDC Token
       #  env:
       #    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}
+        run: echo 'cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}'
 
       - name: Export Digest
         id: export-digest
