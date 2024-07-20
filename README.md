@@ -110,6 +110,7 @@ Container | Channel | Image
 --- | --- | ---
 [actions-runner](https://github.com/volschin/containers/pkgs/container/actions-runner) | stable | ghcr.io/volschin/actions-runner
 [bazarr](https://github.com/volschin/containers/pkgs/container/bazarr) | stable | ghcr.io/volschin/bazarr
+[calibre-web](https://github.com/volschin/containers/pkgs/container/calibre-web) | stable | ghcr.io/volschin/calibre-web
 [home-assistant](https://github.com/volschin/containers/pkgs/container/home-assistant) | stable | ghcr.io/volschin/home-assistant
 [jbops](https://github.com/volschin/containers/pkgs/container/jbops) | stable | ghcr.io/volschin/jbops
 [lidarr](https://github.com/volschin/containers/pkgs/container/lidarr) | master | ghcr.io/volschin/lidarr
