@@ -65,7 +65,7 @@ RUN \
 
 COPY --from=calibre / /opt/calibre
 COPY --from=kepubify /app/kepubify /opt/kepubify/kepubify
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./apps/calibre-web/entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
 VOLUME [ "/config" ]
