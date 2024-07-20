@@ -1,13 +1,11 @@
 ---
-app: "calibre-web"
-base: false
-semantic_versioning: true
+app: calibre-web
+semver: true
 channels:
-  - name: "stable"
-    platforms:
-      - linux/amd64
-      - linux/arm64
+  - name: stable
+    platforms: ["linux/amd64", "linux/arm64"]
     stable: true
     tests:
       enabled: true
       type: web
+  
