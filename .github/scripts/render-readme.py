@@ -28,6 +28,25 @@ def load_metadata_file(file_path):
         return load_metadata_file_yaml(file_path)
     return None
 
+def get_latest_image(name):
+    r = requests.get(
+        f"https://api.github.com/users/{repo_owner}/packages/container/{name}/versions",
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": "token " + os.environ["GITHUB_TOKEN"]
+        },
+    )
+    if r.status_code != 200:
+        print(f"Failed to get versions for {name}: {r.status_code}: {r.text}")
+        return None
+    data = r.json()
+    for image in data:
+        tags = image["metadata"]["container"]["tags"]
+        if "rolling" in tags:
+            return image
+    print(f"Couldn't find rolling tag for {name}")
+    return None
+
 if __name__ == "__main__":
     app_images = []
     for subdir, dirs, files in os.walk("./apps"):
@@ -44,10 +63,13 @@ if __name__ == "__main__":
                 image = {
                     "name": name,
                     "channel": channel["name"],
-                    "html_url": f"https://github.com/{repo_name}/pkgs/container/{name}",
+                    "html_url": "",
                     "owner": repo_owner
                 }
-
+                gh_data = get_latest_image(name)
+                if gh_data is not None:
+                    image["html_url"] = f"https://github.com/{repo_name}/pkgs/container/{name}"
+                    image["tags"] = sorted(gh_data["metadata"]["container"]["tags"])
                 app_images.append(image)
 
     template = env.get_template("README.md.j2")
