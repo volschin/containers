@@ -40,7 +40,7 @@ RUN \
         musl-dev \
         postgresql-dev \
     && \
-    pip install --upgrade "cryptography>=42.0.7" \
+    pip install --upgrade "cryptography>=42.0.7, <43.0.0" \
     pip install --upgrade "gevent>=24.2.1" \
     pip install --upgrade "lxml>=4.3.0, <5.0.0" \
     pip install --upgrade "numpy>=1.12.0" \
