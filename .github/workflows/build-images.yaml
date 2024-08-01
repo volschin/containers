@@ -256,6 +256,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cosign sign --yes ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }}
+      - name: Verify the images
+        run: |
+          cosign verify ${{ steps.prepare-build-outputs.outputs.image_name }}@${{ steps.build.outputs.digest }} \
+             --certificate-identity https://github.com/${{ env.LOWERCASE_REPO_OWNER }}/.github/workflows/* \
+             --certificate-oidc-issuer https://token.actions.githubusercontent.com | jq
 
       - name: Export Digest
         id: export-digest
