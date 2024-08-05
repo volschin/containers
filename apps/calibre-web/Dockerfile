@@ -35,6 +35,7 @@ RUN \
         ca-certificates \
         ghostscript \
         libldap \
+        libmagic \
         libsasl \
         libxi \
         libxslt \
