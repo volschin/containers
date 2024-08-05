@@ -1,7 +1,4 @@
-FROM ghcr.io/cdloh/calibre-bare:7.16.0@sha256:09f4ab5ede0c10d5290ff6da7f2d308ab3f3efd5b4d26acdc6783aebb042297e AS calibre
-FROM ghcr.io/bjw-s/kepubify:4.0.4@sha256:9b260ed42cf364e1de727cb9bb428a121b0da22a1fdc95ea3a0ac0f5f8f80f6f AS kepubify
-
-FROM docker.io/library/python:3.11.9-alpine3.20@sha256:eb8afe385f10ccc9da8378e8712fea8b26f4ed009648f8afea4518836d8b3ed3
+FROM docker.io/library/python:3.12-alpine3.20
 
 ARG TARGETPLATFORM
 ARG TARGETARCH
@@ -34,6 +31,7 @@ RUN \
         bash \
         ca-certificates \
         ghostscript \
+        libc6-compat \
         libldap \
         libmagic \
         libsasl \
@@ -64,8 +62,8 @@ RUN \
     # Set permissions
     && chmod -R 755 /app
 
-COPY --from=calibre / /opt/calibre
-COPY --from=kepubify /app/kepubify /opt/kepubify/kepubify
+COPY --from=ghcr.io/cdloh/calibre-bare:7.16.0 / /opt/calibre
+COPY --from=ghcr.io/bjw-s/kepubify:4.0.4 /app/kepubify /opt/kepubify/kepubify
 COPY ./apps/calibre-web/entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
 
