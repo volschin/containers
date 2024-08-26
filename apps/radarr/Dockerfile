@@ -14,6 +14,7 @@ ENV UMASK="0002" \
 
 USER root
 WORKDIR /app
+ADD https://raw.githubusercontent.com/hotio/arr-discord-notifier/master/arr-discord-notifier.sh /app/
 
 #hadolint ignore=DL3018,DL3059
 RUN \
