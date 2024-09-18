@@ -13,9 +13,11 @@ jobs:
     steps:
       - name: Check issue message for keywords
         id: check_keywords
+        env:
+          body: ${{ github.event.issue.body }}
         run: |
           echo "Checking for keywords..."
-          if echo "${{ github.event.issue.body }}" | grep -i -E 'truenas|truechart'; then
+          if [[ "$body" =~ truenas|truechart ]]; then
             echo "Keywords found"
             echo "keywords_found=true" >> $GITHUB_OUTPUT
           else
