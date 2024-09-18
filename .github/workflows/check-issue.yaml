@@ -17,10 +17,10 @@ jobs:
           echo "Checking for keywords..."
           if echo "${{ github.event.issue.body }}" | grep -i -E 'truenas|truechart'; then
             echo "Keywords found"
-            echo "::set-output name=keywords_found::true"
+            echo "keywords_found=true" >> $GITHUB_OUTPUT
           else
             echo "No keywords found"
-            echo "::set-output name=keywords_found::false"
+            echo "keywords_found=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Comment, close, and lock issue if keywords found
