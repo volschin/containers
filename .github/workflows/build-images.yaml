@@ -390,7 +390,7 @@ jobs:
           registry: ghcr.io
           username: "${{ github.actor }}"
           password: "${{ github.token }}"
-        
+
 
   # Summarize matrix https://github.community/t/status-check-for-a-matrix-jobs/127354/7
   build_success:
